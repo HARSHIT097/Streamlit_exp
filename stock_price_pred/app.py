@@ -22,7 +22,7 @@ if st.checkbox("Show Credits"):
     #st.sidebar.header("**Welcome**")
     st.sidebar.markdown("<h1 style='text-align: left; color: green;'>Welcome!</h1>",
             unsafe_allow_html=True)
-    img = Image.open("logo.png")
+    img = Image.open("//logo.png")
     # st.text[website](https://technocolabs.tech/)
     # display image using streamlit
     # width is used to set the width of an image
@@ -89,7 +89,7 @@ my_expander1 = st.beta_expander("Raw Data", expanded=False)
 with my_expander1:
     #clicked = my_widget("second")
 
-    df = pd.read_csv("test.csv")
+    df = pd.read_csv("//test.csv")
     #list_clm = df.columns
     df = df[["open",'low', 'close', "volume"]].set_index(df['date'])
 

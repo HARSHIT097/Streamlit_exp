@@ -9,15 +9,7 @@ from keras.models import load_model
 from PIL import Image
 import pickle
 #########################functions
-#DATE_COLUMN = 'date/time'
-#DATA_URL = ('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv')
 
-def load_data():
-    df = pd.read_csv(DATA_URL)
-    lowercase = lambda x: str(x).lower()
-    df.rename(lowercase, axis='columns', inplace=True)
-    #data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
-    return df
 
 def data_update_1():
     # sym = 'MSFT'
@@ -25,7 +17,7 @@ def data_update_1():
     df = c.chartDF(symbol=sym, timeframe=timeframe)[['open', 'low', 'close', 'volume']]
     df.reset_index(inplace=True)
     df.to_csv('Datasets//test.csv')
-    data_load_state.text("Done! (using st.cache)")
+    #data_load_state.text("Done! (using st.cache)")
 
 
 st.markdown("<h1 style='text-align: center; color: blue;'>Welcome!\n</h1>"
@@ -35,13 +27,11 @@ st.markdown("<h1 style='text-align: center; color: blue;'>Welcome!\n</h1>"
 #st.title("""Title: **Predicting** *Stock Prices*""")
 # title of the checkbox is 'Show/Hide'
 if st.checkbox("Show Credits"):
-    # dispaly the text if the checkbox returns True value
 
-    #st.sidebar.header("**Welcome**")
     st.sidebar.markdown("<h1 style='text-align: left; color: green;'>Welcome!</h1>",
             unsafe_allow_html=True)
-    img = Image.open("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//logo.png")
-    data_load_state.text("Done! (using st.cache)")
+    img = Image.open("logo.png")
+
     # st.text[website](https://technocolabs.tech/)
     # display image using streamlit
     # width is used to set the width of an image
@@ -75,42 +65,31 @@ Heloo! Welcome to the **demo Project**
 #@Technocolab
 """)
 
+st.title("Symbol Pre Selected/Default Dataset:\n** MSFT **\n*--> Working on Microsoft data*\n")
 
-st.title("Symbol Pre Selected/Default Dataset:\n"
-         "** MSFT **\n"
-         "*--> Working on Microsoft data*\n")
 
-# Selection box
+dataset = st.selectbox("Choose the dataset:" ,
+                       ['day-wise dataset', 'one-min dataset', 'choose symbol'])
 
-# first argument takes the titleof the selectionbox
-# second argument takes options
-dataset = st.selectbox("Choose the dataset: ",
-                     ['day-wise dataset', 'one-min dataset', 'choose symbol'])
-DATA_URL = ('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv')
 
-load_data()
-#df = pd.read_csv("https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv")
-data_load_state.text("Done! (using st.cache)")
+df = pd.read_csv("Datasets/test.csv")
+
 show_raw_data = st.beta_expander("Raw Data", expanded=False)
 with show_raw_data:
     #clicked = my_widget("second")
     st.write("Raw data")
-    #df = pd.read_csv("Datasets//test.csv")
     #list_clm = df.columns
     #df = df[["open",'low', 'close', "volume"]].set_index(df['date'])
     #df = df["open"]
     #df
     if dataset == "day-wise dataset":
-        DATA_URL = ('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//MSFT.csv')
-        load_data()
-        data_load_state.text("Done! (using st.cache)")
-        #df
+        df = pd.read_csv("Datasets//test.csv")
+
     elif dataset == "one-min dataset":
-        DATA_URL = ('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv')
-        load_data()
-        #df = pd.read_csv("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//DataFrame.csv")
-        data_load_state.text("Done! (using st.cache)")
-        #df
+
+        df = pd.read_csv("Datasets//DataFrame.csv")
+
+
     # print the selected hobby
     # st.write("Selected dataset is: ", dataset)
     elif dataset == "choose symbol":
@@ -125,10 +104,9 @@ with show_raw_data:
             st.write("we will update the request due to limited no. of api's")
             # data_update_1()
             st.text("Data updated!!!")
-            DATA_URL = ('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv')
-            load_data()
-            #df = pd.read_csv("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//test.csv")
-            data_load_state.text("Done! (using st.cache)")
+
+            df = pd.read_csv("Datasets//test.csv")
+
             #df
     df
 data_update = st.beta_expander("Update Data", expanded=False)
@@ -139,8 +117,7 @@ with data_update:
         st.write("we will update the request due to limited no. of api's")
         # data_update_1()
         st.text("Data updated!!!")
-        DATA_URL = ('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv')
-        load_data()
+
         df = pd.read_csv("Datasets//test.csv")
         df
 
@@ -167,10 +144,8 @@ col4.write(fo)
 
 my_expander2 = st.beta_expander("Plotting Vizualization", expanded=True)
 with my_expander2:
-    #clicked = my_widget("second")
-    DATA_URL = ('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//test.csv')
-    load_data()
-    od = pd.read_csv("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//test.csv'")
+
+    od = pd.read_csv("Datasets//test.csv")
     #od
     od_test = od[["date", "open", "close"]]
     #od_test
@@ -179,7 +154,7 @@ with my_expander2:
 
 #############modelprediction
 
-my_expander3 = st.beta_expander("Plotting Vizualization", expanded=False)
+my_expander3 = st.beta_expander("Predictions", expanded=False)
 with my_expander3:
     scaler = pickle.load(open('scalerMSFT.pkl', 'rb'))
     model = load_model('modelMSFT.h5')
@@ -233,7 +208,7 @@ elif genre == 'No':
     st.write("Connect us through linkendin(link available in credit section)")
 elif genre == 'Not Interested':
     st.write("No worry")
-    st.write("Connect us through linkendin(link available in credit section)")
+    st.write("Connect us through linkend in(link available in credit section)")
 
 ctn1 = st.beta_container()
 ctn1.subheader("**---------------------------------Caution!---------------------------------------**")

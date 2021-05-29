@@ -16,7 +16,7 @@ def data_update_1():
     timeframe = '1mm'
     df = c.chartDF(symbol=sym, timeframe=timeframe)[['open', 'low', 'close', 'volume']]
     df.reset_index(inplace=True)
-    df.to_csv('Datasets//test.csv')
+    df.to_csv(r'Datasets//test.csv')
     #data_load_state.text("Done! (using st.cache)")
 
 
@@ -72,7 +72,7 @@ dataset = st.selectbox("Choose the dataset:" ,
                        ['day-wise dataset', 'one-min dataset', 'choose symbol'])
 
 
-df = pd.read_csv("Datasets/test.csv")
+df = pd.read_csv(r"Datasets/test.csv")
 
 show_raw_data = st.beta_expander("Raw Data", expanded=False)
 with show_raw_data:
@@ -83,11 +83,11 @@ with show_raw_data:
     #df = df["open"]
     #df
     if dataset == "day-wise dataset":
-        df = pd.read_csv("Datasets//test.csv")
+        df = pd.read_csv(r"Datasets//test.csv")
 
     elif dataset == "one-min dataset":
 
-        df = pd.read_csv("Datasets//DataFrame.csv")
+        df = pd.read_csv(r"Datasets//DataFrame.csv")
 
 
     # print the selected hobby
@@ -105,7 +105,7 @@ with show_raw_data:
             # data_update_1()
             st.text("Data updated!!!")
 
-            df = pd.read_csv("Datasets//test.csv")
+            df = pd.read_csv(r"Datasets//test.csv")
 
             #df
     df
@@ -118,7 +118,7 @@ with data_update:
         # data_update_1()
         st.text("Data updated!!!")
 
-        df = pd.read_csv("Datasets//test.csv")
+        df = pd.read_csv(r"Datasets//test.csv")
         df
 
 col1, col2, col3, col4 = st.beta_columns(4)
@@ -145,7 +145,7 @@ col4.write(fo)
 my_expander2 = st.beta_expander("Plotting Vizualization", expanded=True)
 with my_expander2:
 
-    od = pd.read_csv("Datasets//test.csv")
+    od = pd.read_csv(r"Datasets//test.csv")
     #od
     od_test = od[["date", "open", "close"]]
     #od_test

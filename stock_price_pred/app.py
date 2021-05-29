@@ -1,14 +1,23 @@
 import streamlit as st
 import pyEX as p
 import pandas as pd
+import numpy as np
 import requests
 from datetime import datetime
+from keras.models import load_model
 # import Image from pillow to open images
 from PIL import Image
+import pickle
+#########################functions
+
+def data_update_1():
+    # sym = 'MSFT'
+    timeframe = '1mm'
+    df = c.chartDF(symbol=sym, timeframe=timeframe)[['open', 'low', 'close', 'volume']]
+    df.reset_index(inplace=True)
+    df.to_csv('Datasets//test.csv')
 
 
-token = 'pk_53f6f55f51234bc594c5aaee57dbf2a3'
-c = p.Client(api_token=token, version='stable')
 
 st.markdown("<h1 style='text-align: center; color: blue;'>Welcome!\n</h1>"
 
@@ -22,7 +31,7 @@ if st.checkbox("Show Credits"):
     #st.sidebar.header("**Welcome**")
     st.sidebar.markdown("<h1 style='text-align: left; color: green;'>Welcome!</h1>",
             unsafe_allow_html=True)
-    img = Image.open("//logo.png")
+    img = Image.open("logo.png")
     # st.text[website](https://technocolabs.tech/)
     # display image using streamlit
     # width is used to set the width of an image
@@ -57,43 +66,61 @@ Heloo! Welcome to the **demo Project**
 """)
 
 
-st.title("Symbol Pre Selected:\n"
+st.title("Symbol Pre Selected/Default Dataset:\n"
          "** MSFT **\n"
          "*--> Working on Microsoft data*\n")
 
+# Selection box
 
-data_update = st.beta_expander("Update Data", expanded=False)
-with data_update:
+# first argument takes the titleof the selectionbox
+# second argument takes options
+dataset = st.selectbox("Choose the dataset: ",
+                     ['day-wise dataset', 'one-min dataset', 'choose symbol'])
+
+df = pd.read_csv("Datasets//test.csv")
+
+show_raw_data = st.beta_expander("Raw Data", expanded=False)
+with show_raw_data:
     #clicked = my_widget("second")
-    @st.cache
-    def data_update_1():
-        sym = 'MSFT'
-        timeframe = '1mm'
-        df = c.chartDF(symbol=sym, timeframe=timeframe)[['open', 'low', 'close', 'volume']]
-        df.reset_index(inplace=True)
-        df.to_csv('test.csv')
+    st.write("Raw data")
+    #df = pd.read_csv("Datasets//test.csv")
+    #list_clm = df.columns
+    #df = df[["open",'low', 'close', "volume"]].set_index(df['date'])
+    #df = df["open"]
+    #df
+    if dataset == "day-wise dataset":
+        df = pd.read_csv("Datasets//MSFT.csv")
         #df
-        #df=pd.read_csv("test.csv")
-        #list_clm = df.columns
-        #df = df[['open', 'close', 'volume', 'low']].set_index(df['date'])
-        #return df
-        print(df)
-        # Create a button, that when clicked, shows a text
+    elif dataset == "one-min dataset":
+        df = pd.read_csv("Datasets//DataFrame.csv")
+        #df
+    # print the selected hobby
+    # st.write("Selected dataset is: ", dataset)
+    elif dataset == "choose symbol":
+        sym = 'MSFT'
+        sym = st.text_input("Enter Your Symbol")
+        st.write("The dataset is selected as", sym)
+        token = 'pk_4f41c633a06f40e09c67979fd397a16a'
+        c = p.Client(api_token=token, version='stable')
+
+        if st.button("Update data!"):
+            st.success("Data Updated")
+            st.write("we will update the request due to limited no. of api's")
+            # data_update_1()
+            st.text("Data updated!!!")
+            df = pd.read_csv("Datasets//test.csv")
+            #df
+    df
+data_update = st.beta_expander("Update Data", expanded=False)
+
+with data_update:
     if st.button("Update data"):
         st.success("Data Updated")
-        data_update_1()
+        st.write("we will update the request due to limited no. of api's")
+        # data_update_1()
         st.text("Data updated!!!")
-
-
-my_expander1 = st.beta_expander("Raw Data", expanded=False)
-with my_expander1:
-    #clicked = my_widget("second")
-
-    df = pd.read_csv("//test.csv")
-    #list_clm = df.columns
-    df = df[["open",'low', 'close', "volume"]].set_index(df['date'])
-
-    df
+        df = pd.read_csv("Datasets//test.csv")
+        df
 
 col1, col2, col3, col4 = st.beta_columns(4)
 
@@ -119,23 +146,70 @@ col4.write(fo)
 my_expander2 = st.beta_expander("Plotting Vizualization", expanded=True)
 with my_expander2:
     #clicked = my_widget("second")
-    od = pd.read_csv("test.csv")
+    od = pd.read_csv("Datasets//test.csv")
     #od
     od_test = od[["date", "open", "close"]]
     #od_test
     st.subheader("Plotting Visualization")
     st.line_chart(od_test.rename(columns={"date":"index"}).set_index("index"))
 
+#############modelprediction
+
+my_expander3 = st.beta_expander("Plotting Vizualization", expanded=False)
+with my_expander3:
+    scaler = pickle.load(open('scalerMSFT.pkl', 'rb'))
+    model = load_model('modelMSFT.h5')
+    # model = joblib.load('modelMSFT.pkl')
+
+    with open('ftestMSFT.pkl', 'rb') as f:
+        f_test = pickle.load(f)
+
+    f_test = np.array(f_test)
+    f_test = np.reshape(f_test, (f_test.shape[0], f_test.shape[1], 1))
+
+
+    def user_input_features():
+        day = st.slider('Predicting Day', 1, 90, 1)
+        return day
+
+
+    day = user_input_features()
+
+    f_predict = []
+    n_days = day
+
+    # f_test.append(training_set_scaled[22745:22805, 0])
+
+    # In[92]:
+
+    for i in range(n_days):
+        res = model.predict(f_test)
+        f_predict.append(res[0][0])
+        f_test = np.delete(f_test, [0], None)
+        f_test = np.append(f_test, res[0][0], None)
+        f_test = f_test.reshape(1, 60, 1)
+
+    st.subheader("Predicted Stock Price")
+    res = scaler.inverse_transform([[f_predict[day - 1]]])
+
+    st.write(res[0][0])
+
+
+
+
 
 genre = st.radio(
-  "What's your favorite movie genre",
-  ('Comedy', 'Drama', 'Documentary'))
-if genre == 'Comedy':
-   st.write('You selected comedy.')
-elif genre == 'Drama':
-    st.write("You select drama.")
-elif genre == 'Documentary':
-    st.write("You didn't select comedy.")
+  "Do you Like our project?",
+  ('Yes', 'No', 'Not Interested'))
+if genre == 'Yes':
+   st.write('Thanks! for showing Love.')
+   st.write("Connect us through linkendin(link available in credit section)")
+elif genre == 'No':
+    st.write("Recommend changes! ")
+    st.write("Connect us through linkendin(link available in credit section)")
+elif genre == 'Not Interested':
+    st.write("No worry")
+    st.write("Connect us through linkendin(link available in credit section)")
 
 ctn1 = st.beta_container()
 ctn1.subheader("**---------------------------------Caution!---------------------------------------**")
@@ -143,6 +217,3 @@ ctn1.write("""
 This Project is used for only learning and development process. We don't encourage anyone 
 to invest in stock based on any data represented here.
 """)
-
-if __name__ == "__main__":
-    print("hello")

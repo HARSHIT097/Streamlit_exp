@@ -9,6 +9,15 @@ from keras.models import load_model
 from PIL import Image
 import pickle
 #########################functions
+#DATE_COLUMN = 'date/time'
+#DATA_URL = ('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv')
+
+def load_data():
+    df = pd.read_csv(DATA_URL)
+    lowercase = lambda x: str(x).lower()
+    df.rename(lowercase, axis='columns', inplace=True)
+    #data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
+    return df
 
 def data_update_1():
     # sym = 'MSFT'
@@ -16,7 +25,7 @@ def data_update_1():
     df = c.chartDF(symbol=sym, timeframe=timeframe)[['open', 'low', 'close', 'volume']]
     df.reset_index(inplace=True)
     df.to_csv('Datasets//test.csv')
-
+    data_load_state.text("Done! (using st.cache)")
 
 
 st.markdown("<h1 style='text-align: center; color: blue;'>Welcome!\n</h1>"
@@ -32,6 +41,7 @@ if st.checkbox("Show Credits"):
     st.sidebar.markdown("<h1 style='text-align: left; color: green;'>Welcome!</h1>",
             unsafe_allow_html=True)
     img = Image.open("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//logo.png")
+    data_load_state.text("Done! (using st.cache)")
     # st.text[website](https://technocolabs.tech/)
     # display image using streamlit
     # width is used to set the width of an image
@@ -76,9 +86,11 @@ st.title("Symbol Pre Selected/Default Dataset:\n"
 # second argument takes options
 dataset = st.selectbox("Choose the dataset: ",
                      ['day-wise dataset', 'one-min dataset', 'choose symbol'])
+DATA_URL = ('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv')
 
-df = pd.read_csv("https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv")
-
+load_data()
+#df = pd.read_csv("https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv")
+data_load_state.text("Done! (using st.cache)")
 show_raw_data = st.beta_expander("Raw Data", expanded=False)
 with show_raw_data:
     #clicked = my_widget("second")
@@ -89,10 +101,15 @@ with show_raw_data:
     #df = df["open"]
     #df
     if dataset == "day-wise dataset":
-        df = pd.read_csv("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//MSFT.csv")
+        DATA_URL = ('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//MSFT.csv')
+        load_data()
+        data_load_state.text("Done! (using st.cache)")
         #df
     elif dataset == "one-min dataset":
-        df = pd.read_csv("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//DataFrame.csv")
+        DATA_URL = ('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv')
+        load_data()
+        #df = pd.read_csv("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//DataFrame.csv")
+        data_load_state.text("Done! (using st.cache)")
         #df
     # print the selected hobby
     # st.write("Selected dataset is: ", dataset)
@@ -108,7 +125,10 @@ with show_raw_data:
             st.write("we will update the request due to limited no. of api's")
             # data_update_1()
             st.text("Data updated!!!")
-            df = pd.read_csv("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//test.csv")
+            DATA_URL = ('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv')
+            load_data()
+            #df = pd.read_csv("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//test.csv")
+            data_load_state.text("Done! (using st.cache)")
             #df
     df
 data_update = st.beta_expander("Update Data", expanded=False)
@@ -119,6 +139,8 @@ with data_update:
         st.write("we will update the request due to limited no. of api's")
         # data_update_1()
         st.text("Data updated!!!")
+        DATA_URL = ('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv')
+        load_data()
         df = pd.read_csv("Datasets//test.csv")
         df
 
@@ -146,7 +168,9 @@ col4.write(fo)
 my_expander2 = st.beta_expander("Plotting Vizualization", expanded=True)
 with my_expander2:
     #clicked = my_widget("second")
-    od = pd.read_csv("Datasets//test.csv")
+    DATA_URL = ('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//test.csv')
+    load_data()
+    od = pd.read_csv("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//test.csv'")
     #od
     od_test = od[["date", "open", "close"]]
     #od_test

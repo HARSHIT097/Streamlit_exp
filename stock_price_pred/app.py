@@ -31,7 +31,7 @@ if st.checkbox("Show Credits"):
     #st.sidebar.header("**Welcome**")
     st.sidebar.markdown("<h1 style='text-align: left; color: green;'>Welcome!</h1>",
             unsafe_allow_html=True)
-    img = Image.open("logo.png")
+    img = Image.open("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//logo.png")
     # st.text[website](https://technocolabs.tech/)
     # display image using streamlit
     # width is used to set the width of an image
@@ -77,7 +77,7 @@ st.title("Symbol Pre Selected/Default Dataset:\n"
 dataset = st.selectbox("Choose the dataset: ",
                      ['day-wise dataset', 'one-min dataset', 'choose symbol'])
 
-df = pd.read_csv("Datasets//test.csv")
+df = pd.read_csv("https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/Datasets/test.csv")
 
 show_raw_data = st.beta_expander("Raw Data", expanded=False)
 with show_raw_data:
@@ -89,10 +89,10 @@ with show_raw_data:
     #df = df["open"]
     #df
     if dataset == "day-wise dataset":
-        df = pd.read_csv("Datasets//MSFT.csv")
+        df = pd.read_csv("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//MSFT.csv")
         #df
     elif dataset == "one-min dataset":
-        df = pd.read_csv("Datasets//DataFrame.csv")
+        df = pd.read_csv("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//DataFrame.csv")
         #df
     # print the selected hobby
     # st.write("Selected dataset is: ", dataset)
@@ -108,7 +108,7 @@ with show_raw_data:
             st.write("we will update the request due to limited no. of api's")
             # data_update_1()
             st.text("Data updated!!!")
-            df = pd.read_csv("Datasets//test.csv")
+            df = pd.read_csv("https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//Datasets//test.csv")
             #df
     df
 data_update = st.beta_expander("Update Data", expanded=False)

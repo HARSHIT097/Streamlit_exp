@@ -97,9 +97,9 @@ with show_raw_data:
     #df
     if dataset == "day-wise dataset":
         #df = pd.read_csv(r"Datasets//test.csv")
-        df = load_msft_data(1000)
+        df = load_msft_data(500)
     elif dataset == "one-min dataset":
-        df = load_nfty_data(1000)
+        df = load_nfty_data(500)
         #df = pd.read_csv(r"Datasets//DataFrame.csv")
 
 

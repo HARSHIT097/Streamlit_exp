@@ -16,7 +16,7 @@ def data_update_1():
     timeframe = '1mm'
     df = c.chartDF(symbol=sym, timeframe=timeframe)[['open', 'low', 'close', 'volume']]
     df.reset_index(inplace=True)
-    df.to_csv(r'Datasets//test.csv')
+    df.to_csv(r'https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv')
     #data_load_state.text("Done! (using st.cache)")
 
 @st.cache
@@ -124,6 +124,7 @@ with show_raw_data:
 
             #df
     df
+    """
 data_update = st.beta_expander("Update Data", expanded=False)
 
 with data_update:
@@ -232,7 +233,7 @@ This Project is used for only learning and development process. We don't encoura
 to invest in stock based on any data represented here.
 """)
 
-"""
+
 
 #histogram
 df = pd.DataFrame(weekly_data[:200],
@@ -249,3 +250,4 @@ st.line_chart(df)
 chart_data = pd.DataFrame(weekly_data[:40], columns=["num_orders", "base_price"])
 st.area_chart(chart_data)
 """
+

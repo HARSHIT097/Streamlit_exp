@@ -21,15 +21,15 @@ def data_update_1():
 
 @st.cache
 def load_data(nrows):
-    data = pd.read_csv('Datasets/test.csv', nrows=nrows)
+    data = pd.read_csv('test.csv', nrows=nrows)
     return data
 @st.cache
 def load_msft_data(nrows):
-    data = pd.read_csv('Datasets/MSFT.csv',nrows=nrows)
+    data = pd.read_csv('MSFT.csv',nrows=nrows)
     return data
 @st.cache
 def load_nfty_data(nrows):
-    data = pd.read_csv('Datasets/DataFrame.csv',nrows=nrows)
+    data = pd.read_csv('DataFrame.csv',nrows=nrows)
     return data
 
 st.markdown("<h1 style='text-align: center; color: blue;'>Welcome!\n</h1>"

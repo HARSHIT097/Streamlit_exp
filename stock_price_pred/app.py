@@ -19,6 +19,18 @@ def data_update_1():
     df.to_csv(r'Datasets//test.csv')
     #data_load_state.text("Done! (using st.cache)")
 
+@st.cache
+def load_data(nrows):
+    data = pd.read_csv('Datasets/test.csv', nrows=nrows)
+    return data
+@st.cache
+def load_msft_data(nrows):
+    data = pd.read_csv('Datasets/MSFT.csv',nrows=nrows)
+    return data
+@st.cache
+def load_nfty_data(nrows):
+    data = pd.read_csv('Datasets/DataFrame.csv',nrows=nrows)
+    return data
 
 st.markdown("<h1 style='text-align: center; color: blue;'>Welcome!\n</h1>"
 
@@ -71,8 +83,9 @@ st.title("Symbol Pre Selected/Default Dataset:\n** MSFT **\n*--> Working on Micr
 dataset = st.selectbox("Choose the dataset:" ,
                        ['day-wise dataset', 'one-min dataset', 'choose symbol'])
 
-
-df = pd.read_csv(r"Datasets/test.csv")
+#weekly_data = load_data(1000)
+#df = pd.read_csv(r"Datasets/test.csv")
+df = load_data(1000)
 
 show_raw_data = st.beta_expander("Raw Data", expanded=False)
 with show_raw_data:
@@ -83,11 +96,11 @@ with show_raw_data:
     #df = df["open"]
     #df
     if dataset == "day-wise dataset":
-        df = pd.read_csv(r"Datasets//test.csv")
-
+        #df = pd.read_csv(r"Datasets//test.csv")
+        df = load_msft_data(1000)
     elif dataset == "one-min dataset":
-
-        df = pd.read_csv(r"Datasets//DataFrame.csv")
+        df = load_nfty_data(1000)
+        #df = pd.read_csv(r"Datasets//DataFrame.csv")
 
 
     # print the selected hobby
@@ -104,8 +117,8 @@ with show_raw_data:
             st.write("we will update the request due to limited no. of api's")
             # data_update_1()
             st.text("Data updated!!!")
-
-            df = pd.read_csv(r"Datasets//test.csv")
+            df = load_data(1000)
+            #df = pd.read_csv(r"Datasets//test.csv")
 
             #df
     df
@@ -117,8 +130,8 @@ with data_update:
         st.write("we will update the request due to limited no. of api's")
         # data_update_1()
         st.text("Data updated!!!")
-
-        df = pd.read_csv(r"Datasets//test.csv")
+        df = load_data(1000)
+        #df = pd.read_csv(r"Datasets//test.csv")
         df
 
 col1, col2, col3, col4 = st.beta_columns(4)
@@ -150,11 +163,11 @@ with my_expander2:
     od_test = od[["date", "open", "close"]]
     #od_test
     st.subheader("Plotting Visualization")
-    st.line_chart(od_test.rename(columns={"date":"index"}).set_index("index"))
+    st.bar_chart(od_test.rename(columns={"date":"index"}).set_index("index"))
 
 #############modelprediction
 
-my_expander3 = st.beta_expander("Predictions", expanded=False)
+my_expander3 = st.beta_expander("Predictions", expanded=True)
 with my_expander3:
     scaler = pickle.load(open('scalerMSFT.pkl', 'rb'))
     model = load_model('modelMSFT.h5')
@@ -216,3 +229,21 @@ ctn1.write("""
 This Project is used for only learning and development process. We don't encourage anyone 
 to invest in stock based on any data represented here.
 """)
+
+"""
+
+#histogram
+df = pd.DataFrame(weekly_data[:200],
+                  columns = ["num_orders",
+                "checkout_price",
+                "base_price"])
+df.hist()
+plt.show()
+st.pyplot()
+
+#Line Chart
+st.line_chart(df)
+
+chart_data = pd.DataFrame(weekly_data[:40], columns=["num_orders", "base_price"])
+st.area_chart(chart_data)
+"""

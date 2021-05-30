@@ -225,7 +225,7 @@ elif genre == 'No':
 elif genre == 'Not Interested':
     st.write("No worry")
     st.write("Connect us through linkend in(link available in credit section)")
-
+"""
 ctn1 = st.beta_container()
 ctn1.subheader("**---------------------------------Caution!---------------------------------------**")
 ctn1.write("""
@@ -234,7 +234,7 @@ to invest in stock based on any data represented here.
 """)
 
 
-
+"""
 #histogram
 df = pd.DataFrame(weekly_data[:200],
                   columns = ["num_orders",

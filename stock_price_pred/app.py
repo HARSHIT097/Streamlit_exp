@@ -85,7 +85,7 @@ dataset = st.selectbox("Choose the dataset:" ,
 
 #weekly_data = load_data(1000)
 #df = pd.read_csv(r"Datasets/test.csv")
-df = load_data(1000)
+df = load_data(10)
 
 show_raw_data = st.beta_expander("Raw Data", expanded=False)
 with show_raw_data:
@@ -117,7 +117,7 @@ with show_raw_data:
             st.write("we will update the request due to limited no. of api's")
             # data_update_1()
             st.text("Data updated!!!")
-            df = load_data(1000)
+            df = load_data(10)
             #df = pd.read_csv(r"Datasets//test.csv")
 
             #df
@@ -130,7 +130,7 @@ with data_update:
         st.write("we will update the request due to limited no. of api's")
         # data_update_1()
         st.text("Data updated!!!")
-        df = load_data(1000)
+        df = load_data(10)
         #df = pd.read_csv(r"Datasets//test.csv")
         df
 
@@ -157,8 +157,8 @@ col4.write(fo)
 
 my_expander2 = st.beta_expander("Plotting Vizualization", expanded=True)
 with my_expander2:
-
-    od = pd.read_csv(r"Datasets//test.csv")
+    df = load_data(10)
+    #od = pd.read_csv(r"Datasets//test.csv")
     #od
     od_test = od[["date", "open", "close"]]
     #od_test

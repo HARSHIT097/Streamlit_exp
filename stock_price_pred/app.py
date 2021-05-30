@@ -25,11 +25,13 @@ def load_data(nrows):
     return data
 @st.cache
 def load_msft_data(nrows):
-    data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//MSFT.csv',nrows=nrows)
+    data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv', nrows=nrows)
+    #data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//MSFT.csv',nrows=nrows)
     return data
 @st.cache
 def load_nfty_data(nrows):
-    data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//DataFrame.csv',nrows=nrows)
+    data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv', nrows=nrows)
+    #data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//DataFrame.csv',nrows=nrows)
     return data
 
 st.markdown("<h1 style='text-align: center; color: blue;'>Welcome!\n</h1>"

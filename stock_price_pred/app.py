@@ -21,16 +21,16 @@ def data_update_1():
 
 @st.cache
 def load_data(nrows):
-    data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv', nrows=nrows, encoding="utf8")
+    data = pd.to_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv', nrows=nrows, encoding="utf8")
     return data
 @st.cache
 def load_msft_data(nrows):
-    data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv', nrows=nrows, encoding="utf8")
+    data = pd.to_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv', nrows=nrows, encoding="utf8")
     #data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//MSFT.csv',nrows=nrows)
     return data
 @st.cache
 def load_nfty_data(nrows):
-    data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv', nrows=nrows, encoding="utf8")
+    data = pd.to_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv', nrows=nrows, encoding="utf8")
     #data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//DataFrame.csv',nrows=nrows)
     return data
 

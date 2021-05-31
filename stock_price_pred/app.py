@@ -25,12 +25,12 @@ def load_data(nrows):
     return data
 @st.cache
 def load_msft_data(nrows):
-    data = pd.read_csv('https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test.csv', nrows=nrows)
+    data = pd.read_csv('https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/MSFT.csv', nrows=nrows)
     #data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//MSFT.csv',nrows=nrows)
     return data
 @st.cache
 def load_nfty_data(nrows):
-    data = pd.read_csv('https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test.csv', nrows=nrows)
+    data = pd.read_csv('https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/DataFrame.csv', nrows=nrows)
     #data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//DataFrame.csv',nrows=nrows)
     return data
 
@@ -44,7 +44,7 @@ if st.checkbox("Show Credits"):
 
     st.sidebar.markdown("<h1 style='text-align: left; color: green;'>Welcome!</h1>",
             unsafe_allow_html=True)
-    img = Image.open("logo.png")
+    img = Image.open("https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/logo.png")
 
     # st.text[website](https://technocolabs.tech/)
     # display image using streamlit
@@ -124,7 +124,7 @@ with show_raw_data:
 
             #df
     df
-    """
+    
 data_update = st.beta_expander("Update Data", expanded=False)
 
 with data_update:
@@ -225,7 +225,7 @@ elif genre == 'No':
 elif genre == 'Not Interested':
     st.write("No worry")
     st.write("Connect us through linkend in(link available in credit section)")
-"""
+
 ctn1 = st.beta_container()
 ctn1.subheader("**---------------------------------Caution!---------------------------------------**")
 ctn1.write("""

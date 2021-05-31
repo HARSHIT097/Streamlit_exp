@@ -44,7 +44,7 @@ if st.checkbox("Show Credits"):
 
     st.sidebar.markdown("<h1 style='text-align: left; color: green;'>Welcome!</h1>",
             unsafe_allow_html=True)
-    img = Image.open("https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/logo.png")
+    img = Image.open("logo.png")
 
     # st.text[website](https://technocolabs.tech/)
     # display image using streamlit

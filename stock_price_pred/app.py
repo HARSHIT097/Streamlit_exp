@@ -172,11 +172,11 @@ with my_expander2:
 
 my_expander3 = st.beta_expander("Predictions", expanded=True)
 with my_expander3:
-    scaler = pickle.load(open('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/scaler.pkl', 'rb'))
-    model = load_model('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//modelMSFT.h5')
+    scaler = pickle.load(open('scaler.pkl', 'rb'))
+    model = load_model('modelMSFT.h5')
     # model = joblib.load('modelMSFT.pkl')
 
-    with open('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//ftestMSFT.pkl', 'rb') as f:
+    with open('ftestMSFT.pkl', 'rb') as f:
         f_test = pickle.load(f)
 
     f_test = np.array(f_test)

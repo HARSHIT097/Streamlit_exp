@@ -178,7 +178,7 @@ with my_expander2:
 
 #############modelprediction
 
-urllib.request.urlretrieve("https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/scalerMSFT.pkl?raw=true", "scalerMSFT.pkl")
+urllib.request.urlretrieve("https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/scaler.pkl?raw=true", "scaler.pkl")
 
 urllib.request.urlretrieve("https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/modelmsft.h5?raw=true", "modelmsft.h5")
 

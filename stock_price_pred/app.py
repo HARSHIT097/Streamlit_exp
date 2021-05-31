@@ -87,7 +87,7 @@ dataset = st.selectbox("Choose the dataset:" ,
 
 #weekly_data = load_data(1000)
 #df = pd.read_csv(r"Datasets/test.csv")
-df = load_data(10)
+df = load_data(100)
 
 show_raw_data = st.beta_expander("Raw Data", expanded=False)
 with show_raw_data:

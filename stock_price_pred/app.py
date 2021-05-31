@@ -161,7 +161,7 @@ col4.write(fo)
 my_expander2 = st.beta_expander("Plotting Vizualization", expanded=True)
 with my_expander2:
     df = load_data(10)
-    od = pd.read_csv(r"Datasets//test.csv")
+    od = pd.read_csv(r"https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test.csv")
     #od
     od_test = od[["date", "open", "close"]]
     #od_test

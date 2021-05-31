@@ -16,21 +16,21 @@ def data_update_1():
     timeframe = '1mm'
     df = c.chartDF(symbol=sym, timeframe=timeframe)[['open', 'low', 'close', 'volume']]
     df.reset_index(inplace=True)
-    df.read_csv(r'https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv')
+    df.read_csv(r'https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test.csv')
     #data_load_state.text("Done! (using st.cache)")
 
 @st.cache
 def load_data(nrows):
-    data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv', nrows=nrows)
+    data = pd.read_csv('https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test.csv', nrows=nrows)
     return data
 @st.cache
 def load_msft_data(nrows):
-    data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv', nrows=nrows)
+    data = pd.read_csv('https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test.csv', nrows=nrows)
     #data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//MSFT.csv',nrows=nrows)
     return data
 @st.cache
 def load_nfty_data(nrows):
-    data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//test.csv', nrows=nrows)
+    data = pd.read_csv('https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test.csv', nrows=nrows)
     #data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//DataFrame.csv',nrows=nrows)
     return data
 

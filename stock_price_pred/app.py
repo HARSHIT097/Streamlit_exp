@@ -2,6 +2,9 @@ import streamlit as st
 import pyEX as p
 import pandas as pd
 import numpy as np
+
+
+import urllib
 import requests
 from datetime import datetime
 from keras.models import load_model
@@ -44,7 +47,12 @@ if st.checkbox("Show Credits"):
 
     st.sidebar.markdown("<h1 style='text-align: left; color: green;'>Welcome!</h1>",
             unsafe_allow_html=True)
-    img = Image.open("/content/logo.png")
+    
+
+    urllib.request.urlretrieve("https://technocolabs.tech//assets//img//logo1.png", "logo1.png")
+    #img = Image.open("logo1.png")
+    #img.show()
+    img = Image.open("logo1.png")
 
     # st.text[website](https://technocolabs.tech/)
     # display image using streamlit

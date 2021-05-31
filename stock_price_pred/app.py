@@ -178,6 +178,12 @@ with my_expander2:
 
 #############modelprediction
 
+urllib.request.urlretrieve("https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/scalerMSFT.pkl?raw=true", "scalerMSFT.pkl")
+
+urllib.request.urlretrieve("https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/modelmsft.h5?raw=true", "modelmsft.h5")
+
+urllib.request.urlretrieve("https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/ftestMSFT.pkl?raw=true", "ftestMSFT.pkl")
+
 my_expander3 = st.beta_expander("Predictions", expanded=True)
 with my_expander3:
     scaler = pickle.load(open('scaler.pkl', 'rb'))

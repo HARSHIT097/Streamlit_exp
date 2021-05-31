@@ -191,7 +191,8 @@ with my_expander3:
     # model = joblib.load('modelMSFT.pkl')
     with open('modelmsft.h5', 'rb') as model:
         #loaded_model.load_weights("model.h5")
-        model = model.load_weights("modelmsft.h5")
+        #model = model.load_weights("modelmsft.h5")
+        model = load_model('modelmsft.h5')
     with open('ftestMSFT.pkl', 'rb') as f:
         f_test = pickle.load(f)
 

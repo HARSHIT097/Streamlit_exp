@@ -161,7 +161,7 @@ col4.write(fo)
 my_expander2 = st.beta_expander("Plotting Vizualization", expanded=True)
 with my_expander2:
     df = load_data(10)
-    od = pd.read_csv(r"https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test.csv")
+    od = pd.read_csv(r"https://raw.githubusercontent.com//HARSHIT097//Streamlit_exp//main//stock_price_pred//test.csv")
     #od
     od_test = od[["date", "open", "close"]]
     #od_test
@@ -172,11 +172,11 @@ with my_expander2:
 
 my_expander3 = st.beta_expander("Predictions", expanded=True)
 with my_expander3:
-    scaler = pickle.load(open('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/scaler.pkl', 'rb'))
-    model = load_model('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/modelMSFT.h5')
+    scaler = pickle.load(open('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//scaler.pkl', 'rb'))
+    model = load_model('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//modelMSFT.h5')
     # model = joblib.load('modelMSFT.pkl')
 
-    with open('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/ftestMSFT.pkl', 'rb') as f:
+    with open('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//ftestMSFT.pkl', 'rb') as f:
         f_test = pickle.load(f)
 
     f_test = np.array(f_test)

@@ -172,7 +172,7 @@ with my_expander2:
 
 my_expander3 = st.beta_expander("Predictions", expanded=True)
 with my_expander3:
-    scaler = pickle.load(open('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//scaler.pkl', 'rb'))
+    scaler = pickle.load(open('https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/scaler.pkl', 'rb'))
     model = load_model('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//modelMSFT.h5')
     # model = joblib.load('modelMSFT.pkl')
 

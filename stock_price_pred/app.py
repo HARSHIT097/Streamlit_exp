@@ -187,9 +187,10 @@ urllib.request.urlretrieve("https://github.com/HARSHIT097/Streamlit_exp/blob/mai
 my_expander3 = st.beta_expander("Predictions", expanded=True)
 with my_expander3:
     scaler = pickle.load(open('scaler.pkl', 'rb'))
-    model = load_model('modelMSFT.h5')
+    #model = load_model('modelMSFT.h5')
     # model = joblib.load('modelMSFT.pkl')
-
+    with open('modelMSFT.h5', 'rb') as model:
+        model = pickle.load(model)
     with open('ftestMSFT.pkl', 'rb') as f:
         f_test = pickle.load(f)
 

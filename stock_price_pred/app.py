@@ -44,7 +44,7 @@ if st.checkbox("Show Credits"):
 
     st.sidebar.markdown("<h1 style='text-align: left; color: green;'>Welcome!</h1>",
             unsafe_allow_html=True)
-    img = Image.open("logo.png")
+    img = Image.open("/content/logo.png")
 
     # st.text[website](https://technocolabs.tech/)
     # display image using streamlit

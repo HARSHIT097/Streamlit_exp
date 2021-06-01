@@ -552,7 +552,7 @@ with my_expander4:
 
         df = pickle.load(open('df_msft.pkl', 'rb'))
         scaler = pickle.load(open('scalerMSFT.pkl', 'rb'))
-        model = load_model('modelMSFT.h5')
+        model = load_model('modelmsft.h5')
         # model = joblib.load('modelMSFT.pkl')
 
         with open('ftestMSFT.pkl', 'rb') as f:

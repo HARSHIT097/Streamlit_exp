@@ -26,7 +26,21 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 caching.clear_cache()
 #########################functions
+ def user_input_features1():
+        date = st.date_input('Select Date')
+        date = date.day
+        hour = st.slider('Hour of the day', 9, 17, 9)
+        minute = st.slider('Minute of the day', 0, 59, 5)
 
+        return date, hour, minute
+ def user_input_features2():
+        date = st.date_input('Select Date')
+        date = date.day
+        hour = st.slider('Hour of the day', 9, 17, 9)
+        minute = st.slider('Minute of the day', 0, 59, 5)
+
+        return date
+                     
 def calcMovingAverage(data, size):
     df = data.copy()
     df['sma'] = df['open'].rolling(size).mean()
@@ -483,17 +497,8 @@ with my_expander4:
 
         st.header('User Input Parameters')
 
-
-        def user_input_features():
-            date1 = st.date_input('Select Date')
-            date1 = date.day
-            hour = st.slider('Hour of the day', 9, 17, 9)
-            minute = st.slider('Minute of the day', 0, 59, 5)
-
-            return date1, hour, minute
-
-
-        day, hour, minute = user_input_features()
+        
+        day, hour, minute = user_input_features1()
 
         f_predict = []
         n_days = 1
@@ -562,14 +567,14 @@ with my_expander4:
         f_test = np.array(f_test)
         f_test = np.reshape(f_test, (f_test.shape[0], f_test.shape[1], 1))
 
-
+        """
         def user_input_features():
             date = st.date_input('Select Date')
             # st.write(date.day)
             return date.day
-
-
-        day = user_input_features()
+        """
+        #day, hour, minute = user_input_features()
+        day = user_input_features2()
 
         f_predict = []
         n_days = day

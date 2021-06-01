@@ -26,7 +26,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 caching.clear_cache()
 #########################functions
- def user_input_features1():
+def user_input_features1():
         date = st.date_input('Select Date')
         date = date.day
         hour = st.slider('Hour of the day', 9, 17, 9)

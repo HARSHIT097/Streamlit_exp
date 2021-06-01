@@ -27,6 +27,7 @@ from plotly.subplots import make_subplots
 caching.clear_cache()
 #########################functions
 def user_input_features1():
+        
         date = st.date_input('Select Date')
         date = date.day
         hour = st.slider('Hour of the day', 9, 17, 9)
@@ -34,12 +35,9 @@ def user_input_features1():
 
         return date, hour, minute
  def user_input_features2():
-        date = st.date_input('Select Date')
-        date = date.day
-        hour = st.slider('Hour of the day', 9, 17, 9)
-        minute = st.slider('Minute of the day', 0, 59, 5)
-
-        return date
+                date = st.date_input('Select Date')
+                date = date.day  
+                return date
                      
 def calcMovingAverage(data, size):
     df = data.copy()

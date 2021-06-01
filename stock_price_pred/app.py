@@ -76,7 +76,7 @@ def load_nfty_data(nrows):
                        nrows=nrows)
     # data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//DataFrame.csv',nrows=nrows)
     return data
-nrows = len(data.index)
+#nrows = len(data.index)
 ######################title#########and############sidebaar###########
 
 st.markdown("<h1 style='text-align: left; color: blue;'>Welcome!\n</h1>"

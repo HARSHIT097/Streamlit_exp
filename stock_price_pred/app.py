@@ -17,7 +17,8 @@ from keras.models import load_model
 from PIL import Image
 import pickle
 import matplotlib.dates as mpdates
-from mplfinance.original_flavor import candlestick_ohlc
+#from mplfinance.original_flavor import candlestick_ohlc
+import mplfinance as fplt
 #from mplfinance import candlestick_ohlc
 import plotly.express as px
 import datetime as dt
@@ -327,7 +328,7 @@ with my_expander7:
         #df1.columns.lowercase()
         #data.columns = map(str.lower, data.columns)
         show_info(df2)
-"""     
+    
 my_expander2 = st.beta_expander("Plotting Visualization", expanded=False)
 with my_expander2:
     genre = st.radio(
@@ -347,38 +348,17 @@ with my_expander2:
 
     if genre == 'comparative':
         st.write('All data')
-        # apply map function
-        df['date'] = df['date'].map(mpdates.date2num)
-
-        # creating Subplots
-        fig, ax = plt.subplots()
-
-        # plotting the data
-        candlestick_ohlc(ax, df.values, width=0.6,
-                         colorup='green', colordown='red',
-                         alpha=0.8)
-
-        # allow grid
-        ax.grid(True)
-
-        # Setting labels
-        ax.set_xlabel('Date')
-        ax.set_ylabel('Price')
-
-        # setting title
-        plt.title('Prices For the Period 01-07-2020 to 15-07-2020')
-
-        # Formatting Date
-        date_format = mpdates.DateFormatter('%Y-%m-%d')
-        ax.xaxis.set_major_formatter(date_format)
-        fig.autofmt_xdate()
-
-        fig.tight_layout()
-
-        # show the plot
-        # plt.show()
-        st.write(fig)
-        #st.write("Connect us through linkendin(link available in credit section)")
+        fplt.plot(
+            apple_df,
+            type='candle',
+            style="yahoo",
+            title='Data candle-stick Chaart',
+            ylabel='Price ($)'
+            volume=True,
+            ylabel_lower='Shares\nTraded',
+            )
+        
+        
     elif genre == 'interactive':
         st.write("Customize by selecting the area")
         fig4 = go.Figure(data=[go.Candlestick(x=df['date'],
@@ -390,7 +370,7 @@ with my_expander2:
         # fig4.show()
         st.write(fig4)
 
-"""
+
 
 
 my_expander3 = st.beta_expander("Indicators", expanded=False)

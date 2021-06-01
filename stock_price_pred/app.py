@@ -315,7 +315,7 @@ with my_expander7:
         #df1.columns.lowercase()
         #data.columns = map(str.lower, data.columns)
         show_info(df2)
-        
+   """     
 my_expander2 = st.beta_expander("Plotting Visualization", expanded=False)
 with my_expander2:
     genre = st.radio(
@@ -378,7 +378,7 @@ with my_expander2:
         # fig4.show()
         st.write(fig4)
 
-
+"""
 
 
 my_expander3 = st.beta_expander("Indicators", expanded=False)

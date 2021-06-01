@@ -584,11 +584,11 @@ with my_expander4:
         res = scaler.inverse_transform([[f_predict[day - 1]]])
         col1, col2, col3 = st.beta_columns(3)
 
-        original = df.Open[0]
+        #original = df.Open[0]
         col1.subheader("Open Price")
         col1.write(res[0][0])
 
-        grayscale = df.Open[0]
+        #grayscale = df.Open[0]
         col2.subheader("Prev Day Open")
         a = scaler.inverse_transform([[f_predict[day - 2]]])[0][0]
         col2.write(a)

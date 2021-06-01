@@ -34,10 +34,10 @@ def user_input_features1():
         minute = st.slider('Minute of the day', 0, 59, 5)
 
         return date, hour, minute
- def user_input_features2():
-                date = st.date_input('Select Date')
-                date = date.day  
-                return date
+def user_input_features2():
+        date = st.date_input('Select Date')
+        date = date.day  
+        return date
                      
 def calcMovingAverage(data, size):
     df = data.copy()

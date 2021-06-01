@@ -335,7 +335,7 @@ with my_expander2:
     if genre == 'comparative':
         st.write('All data')
         # apply map function
-        df['date'] = df['date'].map(mpdates.date2num)
+        #df['date'] = df['date'].map(mpdates.date2num)
 
         # creating Subplots
         fig, ax = plt.subplots()

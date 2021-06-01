@@ -45,6 +45,12 @@ urllib.request.urlretrieve(
 urllib.request.urlretrieve(
     "https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/ftestMSFT.pkl?raw=true", "ftestMSFT.pkl")
 
+urllib.request.urlretrieve(
+    "https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/df_msft.pkl?raw=true", "df_msft.pkl")
+urllib.request.urlretrieve(
+    "https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/df_nifty.pkl?raw=true", "df_nifty.pkl")
+
+
 def data_update_1():
     # sym = 'MSFT'
     timeframe = '1mm'

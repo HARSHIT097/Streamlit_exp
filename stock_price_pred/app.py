@@ -6,7 +6,7 @@ import streamlit as st
 import yfinance as yf
 import pandas as pd
 import numpy as np
-import datetime
+#import datetime
 import matplotlib.pyplot as plt
 import seaborn as sns
 import urllib
@@ -302,6 +302,7 @@ with my_expander7:
     
     if option1 == "MSFT":
         'You selected:', option1
+       
         df1 = pd.read_csv("https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test_002.csv")
         df1.columns = [x.lower() for x in df1.columns]
         #df1.columns.lowercase()
@@ -323,8 +324,8 @@ with my_expander2:
     plt.style.use('dark_background')
 
     # extracting Data for plotting
-
-    df = pd.read_csv('https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/Datasets/MSFT.csv')
+    df = load_msft_data(500)
+    #df = pd.read_csv('https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/Datasets/MSFT.csv')
     df.columns = map(str.lower, df.columns)
     df = df[['date', 'open', 'high',
              'low', 'close']]

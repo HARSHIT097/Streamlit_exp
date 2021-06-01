@@ -330,7 +330,7 @@ with my_expander2:
              'low', 'close']]
 
     # convert into datetime object
-    df['date'] = pd.to_datetime(df['date'])
+    #df['date'] = pd.to_datetime(df['date'])
 
     if genre == 'comparative':
         st.write('All data')
@@ -484,12 +484,12 @@ with my_expander4:
 
 
         def user_input_features():
-            date = st.date_input('Select Date')
-            date = date.day
+            date1 = st.date_input('Select Date')
+            date1 = date.day
             hour = st.slider('Hour of the day', 9, 17, 9)
             minute = st.slider('Minute of the day', 0, 59, 5)
 
-            return date, hour, minute
+            return date1, hour, minute
 
 
         day, hour, minute = user_input_features()

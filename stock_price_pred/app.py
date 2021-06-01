@@ -604,10 +604,10 @@ with my_expander4:
         ts = pd.Series(range(len(idx)), index=idx)
         r = scaler.inverse_transform([f_predict]).reshape(-1, 1)
         r = r.reshape(r.shape[0])
-        fig, ax = plt.subplots()
-        ax = sns.lineplot(x=df.Date[df.Date.dt.year > 2019], y=df['Open'], color='r')
-        ax = sns.lineplot(x=idx, y=r)
-        st.pyplot(fig)
+        fig8, ax1 = plt.subplots()
+        ax1 = sns.lineplot(x=df.Date[df.Date.dt.year > 2019], y=df['Open'], color='r')
+        ax1 = sns.lineplot(x=idx, y=r)
+        st.pyplot(fig8)
 
 
   

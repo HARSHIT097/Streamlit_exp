@@ -71,7 +71,8 @@ urllib.request.urlretrieve(
     "https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/modelMSFT.pkl?raw=true", "modelMSFT.pkl")
 urllib.request.urlretrieve(
     "https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/model.h5?raw=true", "model.h5")
-
+urllib.request.urlretrieve(
+    "https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/ftest.pkl?raw=true", "ftest.pkl")
 
 @st.cache
 def load_data(nrows):

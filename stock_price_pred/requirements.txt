@@ -1,5 +1,5 @@
 matplotlib
-sklearn==0.22.1
+sklearn
 streamlit>=0.73
 pandas==0.25.3
 numpy==1.18.1

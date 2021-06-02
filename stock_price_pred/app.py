@@ -468,8 +468,8 @@ with my_expander4:
                     minutes = minutes + 1
                 hours = hours - 1
                 minutes = 0
-            #hours = 8
-            #minutes = 0
+            hours = 8
+            minutes = 0
 
         hour = hour - 8
 
@@ -500,7 +500,7 @@ with my_expander4:
         r = r.reshape(r.shape[0])
         fig, ax = plt.subplots()
         ax = sns.lineplot(x=df.DateAndTime, y=df['open'], color='r')
-        #ax = sns.lineplot(x=idx, y=r)
+        ax = sns.lineplot(x=idx, y=r)
         st.pyplot(fig)
 
     # MSFFTT
@@ -559,7 +559,7 @@ with my_expander4:
         fig8, ax1 = plt.subplots()
 
         ax1 = sns.lineplot(x=df.Date[df.Date.dt.year > 2019], y=df['Open'], color='r')
-        #ax1 = sns.lineplot(x=idx, y=r)
+        ax1 = sns.lineplot(x=idx, y=r)
 
         st.pyplot(fig8)
 

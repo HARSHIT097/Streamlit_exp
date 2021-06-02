@@ -1,11 +1,11 @@
 ############################import libraries#############
 
 import streamlit as st
-# import pyEX as p
+
 import yfinance as yf
 import pandas as pd
 import numpy as np
-# import datetime
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 import urllib
@@ -15,18 +15,13 @@ from keras.models import load_model
 # import Image from pillow to open images
 from PIL import Image
 import pickle
-#import matplotlib.dates as mpdates
-# from mplfinance.original_flavor import candlestick_ohlc
-#import mplfinance as fplt
-#import finplot as fplt
-# from mplfinance import candlestick_ohlc
+
 import plotly.express as px
 import datetime as dt
 from streamlit import caching
 import plotly.graph_objects as go
-#from plotly.subplots import make_subplots
-#import altair as alt
-#from altair.expr import datum
+from plotly.subplots import make_subplots
+
 #caching.clear_cache()
 
 #print(sys.getrecursionlimit())
@@ -75,15 +70,6 @@ urllib.request.urlretrieve(
 urllib.request.urlretrieve(
     "https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/modelMSFT.pkl?raw=true", "modelMSFT.pkl")
 
-"""
-def data_update_1():
-    # sym = 'MSFT'
-    timeframe = '1mm'
-    df = c.chartDF(symbol=sym, timeframe=timeframe)[['open', 'low', 'close', 'volume']]
-    df.reset_index(inplace=True)
-    df.read_csv(r'https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test.csv')
-    # data_load_state.text("Done! (using st.cache)")
-"""
 
 @st.cache
 def load_data(nrows):
@@ -366,7 +352,7 @@ with my_expander2:
 
 
 
-my_expander3 = st.beta_expander("Indicators", expanded=False)
+my_expander3 = st.beta_expander("Visualization with Indicators", expanded=False)
 with my_expander3:
     df = pd.read_csv("https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test_002.csv")
 

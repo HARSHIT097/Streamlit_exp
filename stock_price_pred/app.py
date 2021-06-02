@@ -1,51 +1,58 @@
-
 ############################import libraries#############
 
 import streamlit as st
-#import pyEX as p
+# import pyEX as p
 import yfinance as yf
 import pandas as pd
 import numpy as np
-#import datetime
+# import datetime
 import matplotlib.pyplot as plt
 import seaborn as sns
 import urllib
-import requests
-from datetime import datetime
+#import requests
+#from datetime import datetime
 from keras.models import load_model
 # import Image from pillow to open images
 from PIL import Image
 import pickle
-import matplotlib.dates as mpdates
-#from mplfinance.original_flavor import candlestick_ohlc
-import mplfinance as fplt
-#from mplfinance import candlestick_ohlc
+#import matplotlib.dates as mpdates
+# from mplfinance.original_flavor import candlestick_ohlc
+#import mplfinance as fplt
+#import finplot as fplt
+# from mplfinance import candlestick_ohlc
 import plotly.express as px
 import datetime as dt
 from streamlit import caching
 import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-caching.clear_cache()
+#from plotly.subplots import make_subplots
+#import altair as alt
+#from altair.expr import datum
+#caching.clear_cache()
+
+
 #########################functions
 def user_input_features1():
-        
-        date = st.date_input('Select Date')
-        date = date.day
-        hour = st.slider('Hour of the day', 9, 17, 9)
-        minute = st.slider('Minute of the day', 0, 59, 5)
+    date = st.date_input('Select Date')
+    date = date.day
+    hour = st.slider('Hour of the day', 9, 17, 9)
+    minute = st.slider('Minute of the day', 0, 59, 5)
 
-        return date, hour, minute
+    return date, hour, minute
+
+
 def user_input_features2():
-        date = st.date_input('Select Date')
-        date = date.day  
-        return date
-                     
+    date = st.date_input('Select Date')
+    date = date.day
+    return date
+
+
 def calcMovingAverage(data, size):
     df = data.copy()
     df['sma'] = df['open'].rolling(size).mean()
     df['ema'] = df['open'].ewm(span=size, min_periods=size).mean()
     df.dropna(inplace=True)
     return df
+
 
 #############modelprediction
 
@@ -67,6 +74,7 @@ urllib.request.urlretrieve(
 urllib.request.urlretrieve(
     "https://github.com/HARSHIT097/Streamlit_exp/blob/main/stock_price_pred/modelMSFT.pkl?raw=true", "modelMSFT.pkl")
 
+"""
 def data_update_1():
     # sym = 'MSFT'
     timeframe = '1mm'
@@ -74,7 +82,7 @@ def data_update_1():
     df.reset_index(inplace=True)
     df.read_csv(r'https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test.csv')
     # data_load_state.text("Done! (using st.cache)")
-
+"""
 
 @st.cache
 def load_data(nrows):
@@ -93,12 +101,13 @@ def load_msft_data(nrows):
 
 @st.cache
 def load_nfty_data(nrows):
-
     data = pd.read_csv('https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/DataFrame.csv',
                        nrows=nrows)
     # data = pd.read_csv('https://github.com//HARSHIT097//Streamlit_exp//blob//main//stock_price_pred//DataFrame.csv',nrows=nrows)
     return data
-#nrows = len(data.index)
+
+
+# nrows = len(data.index)
 ######################title#########and############sidebaar###########
 
 st.markdown("<h1 style='text-align: left; color: blue;'>Welcome!\n</h1>"
@@ -160,7 +169,7 @@ with my_expander6:
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     infoType = st.radio(
         "Choose an info type",
-        ('Company Profile','Market trend', 'Fundamental Info', 'Market Info', 'Business Summary')
+        ('Company Profile', 'Market trend', 'Fundamental Info', 'Market Info', 'Business Summary')
     )
     if infoType == 'Company Profile':
 
@@ -169,14 +178,14 @@ with my_expander6:
 
         col01, col02, col03 = st.beta_columns(3)
 
-        #sector = st.markdown('** Sector **: ' + info['sector'])
+        # sector = st.markdown('** Sector **: ' + info['sector'])
         sector = info['sector']
         col01.header("Sector")
         col01.write(sector)
 
         # grayscale = original.convert('LA')
         industry = info['industry']
-        #industry = st.markdown('** Industry **: ' + info['industry'])
+        # industry = st.markdown('** Industry **: ' + info['industry'])
         col02.header("Industry")
         col02.write(industry)
 
@@ -260,10 +269,8 @@ with my_expander6:
         st.plotly_chart(fig, use_container_width=True)
 
 
-
 def show_info(df):
-
-    #df = pd.read_csv("test_002.csv")
+    # df = pd.read_csv("test_002.csv")
     col1, col2 = st.beta_columns(2)
 
     original = df.open[0]
@@ -275,9 +282,9 @@ def show_info(df):
     col2.header("Prev Close")
     col2.write(grayscale)
 
-    #volume = df.volume[0]
-    #col3.header("Volume")
-    #col3.write(volume)
+    # volume = df.volume[0]
+    # col3.header("Volume")
+    # col3.write(volume)
 
     st.write("last day return")
     x = 0
@@ -301,7 +308,8 @@ def show_info(df):
     fo4 = "{:.2f}".format(return4)
     col7.header("Return % last year")
     col7.write(fo4)
-    
+
+
 my_expander7 = st.beta_expander("Basic Info ", expanded=False)
 with my_expander7:
     st.header('Select Dataset to view info')
@@ -312,70 +320,53 @@ with my_expander7:
         'Select prediction Interval',
         df['first column'])
 
-    
     if option1 == "MSFT":
-        'You selected:', option1
-       
-        df1 = pd.read_csv("https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test_002.csv")
+        #'You selected:', option1
+
+        df1 = pd.read_csv(
+            "https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test_002.csv")
         df1.columns = [x.lower() for x in df1.columns]
-        #df1.columns.lowercase()
-        #data.columns = map(str.lower, data.columns)
+        # df1.columns.lowercase()
+        # data.columns = map(str.lower, data.columns)
         show_info(df1)
     if option1 == "NIFTY":
-        'You selected:', option1
-        df2 = pd.read_csv("https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/Datasets/DataFrame.csv")
-        #df1.columns = [x.lower() for x in df1.columns]
-        #df1.columns.lowercase()
-        #data.columns = map(str.lower, data.columns)
+        #'You selected:', option1
+        df2 = pd.read_csv(
+            "https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/Datasets/DataFrame.csv")
+        # df1.columns = [x.lower() for x in df1.columns]
+        # df1.columns.lowercase()
+        # data.columns = map(str.lower, data.columns)
         show_info(df2)
-    
+
 my_expander2 = st.beta_expander("Plotting Visualization", expanded=False)
 with my_expander2:
-    genre = st.radio(
-        "Options:",
-        ('comparative', 'interactive'))
-    plt.style.use('dark_background')
+
 
     # extracting Data for plotting
-    df = load_msft_data(500)
-    #df = pd.read_csv('https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/Datasets/MSFT.csv')
+
+    df = load_msft_data(8858)
+    #df = pd.read_csv('https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test_002.csv')
     df.columns = map(str.lower, df.columns)
     df = df[['date', 'open', 'high',
-             'low', 'close']]
-
+             'low', 'close', 'volume']]
+    #df.set_index("date", inplace=True)
+    df.set_index(pd.DatetimeIndex(df['date']), inplace=True)
     # convert into datetime object
-    #df['date'] = pd.to_datetime(df['date'])
+    # df['date'] = pd.to_datetime(df['date'])
+    st.write("Customize by selecting the area")
+    fig4 = go.Figure(data=[go.Candlestick(x=df['date'],
+                                          open=df['open'], high=df['high'],
+                                          low=df['low'], close=df['close'])
+                           ])
 
-    if genre == 'comparative':
-        st.write('All data')
-        fplt.plot(
-            apple_df,
-            type='candle',
-            style="yahoo",
-            title='Data candle-stick Chaart',
-            ylabel='Price ($)'
-            volume=True,
-            ylabel_lower='Shares\nTraded',
-            )
-        
-        
-    elif genre == 'interactive':
-        st.write("Customize by selecting the area")
-        fig4 = go.Figure(data=[go.Candlestick(x=df['date'],
-                                              open=df['open'], high=df['high'],
-                                              low=df['low'], close=df['close'])
-                               ])
-
-        fig4.update_layout(xaxis_rangeslider_visible=False)
-        # fig4.show()
-        st.write(fig4)
-
+    fig4.update_layout(xaxis_rangeslider_visible=False)
+    # fig4.show()
+    st.write(fig4)
 
 
 
 my_expander3 = st.beta_expander("Indicators", expanded=False)
 with my_expander3:
-
     df = pd.read_csv("https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/test_002.csv")
 
     df['MA12'] = df['open'].rolling(12).mean()
@@ -448,11 +439,8 @@ with my_expander3:
 
         st.plotly_chart(figMA, use_container_width=True)
 
-
-
 my_expander4 = st.beta_expander("Visualization and Prediction(on specific dataset)", expanded=False)
 with my_expander4:
-
     st.header('Users Input Parameters')
     df = pd.DataFrame({
         'first column': ["MSFT 1- Day", "NIFTY 1-Minute"]
@@ -462,9 +450,9 @@ with my_expander4:
         df['first column'])
 
     if option == "NIFTY 1-Minute":
-        'You selected:', option
+        #'You selected:', option
         df = pickle.load(open('df_nifty.pkl', 'rb'))
-        #df = pd.read_csv("Datasets/MSFT.csv")
+        # df = pd.read_csv("Datasets/MSFT.csv")
         scaler = pickle.load(open('scaler.pkl', 'rb'))
         model = load_model('model.h5')
         with open('ftest.pkl', 'rb') as f:
@@ -475,7 +463,6 @@ with my_expander4:
 
         st.header('User Input Parameters')
 
-        
         day, hour, minute = user_input_features1()
 
         f_predict = []
@@ -526,13 +513,12 @@ with my_expander4:
         r = r.reshape(r.shape[0])
         fig, ax = plt.subplots()
         ax = sns.lineplot(x=df.DateAndTime, y=df['open'], color='r')
-        ax = sns.lineplot(x=idx, y=r)
+        #ax = sns.lineplot(x=idx, y=r)
         st.pyplot(fig)
 
     # MSFFTT
     if option == "MSFT 1- Day":
         'You selected:', option
-
 
         df = pickle.load(open('df_msft.pkl', 'rb'))
         scaler = pickle.load(open('scalerMSFT.pkl', 'rb'))
@@ -545,13 +531,8 @@ with my_expander4:
         f_test = np.array(f_test)
         f_test = np.reshape(f_test, (f_test.shape[0], f_test.shape[1], 1))
 
-        """
-        def user_input_features():
-            date = st.date_input('Select Date')
-            # st.write(date.day)
-            return date.day
-        """
-        #day, hour, minute = user_input_features()
+        
+        # day, hour, minute = user_input_features()
         day = user_input_features2()
 
         f_predict = []
@@ -568,11 +549,11 @@ with my_expander4:
         res = scaler.inverse_transform([[f_predict[day - 1]]])
         col1, col2, col3 = st.beta_columns(3)
 
-        #original = df.Open[0]
+        # original = df.Open[0]
         col1.subheader("Open Price")
         col1.write(res[0][0])
 
-        #grayscale = df.Open[0]
+        # grayscale = df.Open[0]
         col2.subheader("Prev Day Open")
         a = scaler.inverse_transform([[f_predict[day - 2]]])[0][0]
         col2.write(a)
@@ -589,12 +570,12 @@ with my_expander4:
         r = scaler.inverse_transform([f_predict]).reshape(-1, 1)
         r = r.reshape(r.shape[0])
         fig8, ax1 = plt.subplots()
+
         ax1 = sns.lineplot(x=df.Date[df.Date.dt.year > 2019], y=df['Open'], color='r')
         ax1 = sns.lineplot(x=idx, y=r)
+
         st.pyplot(fig8)
 
-
-  
 ################footer - finalized##########
 genre = st.radio(
     "Do you Like our project?",
@@ -608,8 +589,6 @@ elif genre == 'No':
 elif genre == 'Not Interested':
     st.write("No worry")
     st.write("Connect us through linkendin(link available in credit section)")
-
-
 
 ctn1 = st.beta_container()
 ctn1.subheader("**---------------------------------Caution!---------------------------------------**")

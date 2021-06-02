@@ -574,7 +574,7 @@ with my_expander4:
         fig8, ax1 = plt.subplots()
 
         ax1 = sns.lineplot(x=df.Date[df.Date.dt.year > 2019], y=df['Open'], color='r')
-        ax1 = sns.lineplot(x=idx, y=r)
+        #ax1 = sns.lineplot(x=idx, y=r)
 
         st.pyplot(fig8)
 

@@ -28,8 +28,7 @@ import plotly.graph_objects as go
 #import altair as alt
 #from altair.expr import datum
 #caching.clear_cache()
-import sys
-sys.setrecursionlimit(150000)
+
 #print(sys.getrecursionlimit())
 
 #########################functions

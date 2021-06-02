@@ -148,7 +148,7 @@ my_expander6 = st.beta_expander("Get fundamentals by choosing Stocks(SNP 500)", 
 with my_expander6:
     # https://raw.githubusercontent.com/teobeeguan/market_profile/main/Datasets/SP500.csv
 
-    snp500 = pd.read_csv("https://raw.githubusercontent.com/teobeeguan/market_profile/main/Datasets/SP500.csv")
+    snp500 = pd.read_csv("https://raw.githubusercontent.com/HARSHIT097/Streamlit_exp/main/stock_price_pred/Datasets/SP500.csv")
     symbols = snp500['Symbol'].sort_values().tolist()
 
     ticker = st.selectbox(

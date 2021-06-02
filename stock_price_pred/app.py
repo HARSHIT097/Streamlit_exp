@@ -472,7 +472,7 @@ with my_expander4:
         minutes = 0
         hours = 8  # [9--17]
 
-        for i in range(n_days):
+        for i in range(90 - n_days):
             while (hours > 0):
                 while (minutes < 60):
                     res = model.predict(f_test)

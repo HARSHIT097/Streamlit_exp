@@ -1,11 +1,11 @@
 matplotlib
-streamlit>=0.73
-pandas==0.25.3
+streamlit
+pandas
 numpy==1.18.1
 scikit-learn
 yfinance
 mplfinance
-tensorflow>=2.3.1
+tensorflow
 keras
 plotly-express
 seaborn

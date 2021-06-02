@@ -137,8 +137,10 @@ if st.checkbox("Show Credits"):
         "4. [Snehashish](https://www.linkedin.com/in/snehashish-chakraborty-884598121/)\n"
         "5. [Pranay](https://www.linkedin.com/in/harshit-singh-097/)"
     )
+    st.sidebar.subheader("Project Report")
+    st.sidebar.info("[Project Report](https://docs.google.com/document/d/1CoZeNjS-dufEl59E45-qQwRboGB3vDuS9Qpt1h_dUrI/edit?usp=sharing)\n")
+    st.sidebar.subheader("Connect with Technocollab")
     st.sidebar.info("[contact us](https://www.technocolabs.tech/)\n")
-
 st.write("""
 Heloo! Welcome to the ** Project**
 #@Technocolab

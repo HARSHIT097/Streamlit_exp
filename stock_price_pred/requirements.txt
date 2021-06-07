@@ -1,0 +1,9 @@
+streamlit
+pandas
+numpy==1.18.1
+scikit-learn
+yfinance
+tensorflow
+keras
+plotly-express
+seaborn

@@ -4,7 +4,6 @@ pandas
 numpy==1.18.1
 scikit-learn
 yfinance
-mplfinance
 tensorflow
 keras
 plotly-express

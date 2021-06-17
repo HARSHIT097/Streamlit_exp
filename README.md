@@ -6,6 +6,8 @@ Video Link:
 https://www.youtube.com/watch?v=qqPqq77nv_A&t=36s
 
 ##project experience
+
+
 """
 Handling a end to end project working with teams sharing knowledge is really great in this project. We have started with dummy dataset and learned to work on real time dataset using APIs. The data cleaning or the whole exploratory data analysis which we call data preprocessing exposes us that how to shape your data for the model as required analyzing variables to distribution, missing  values to creating new features from existing one. In the modeling part we analyzed the basic working of model and tuned it accordingly when it overfits or underfits. The last and most important part is the deployment one where we know how to implement things applying OOPs concepts, defining functions, using GitHub deploying model through streamlit/heroku. Designing the interface to make it user friendly explaining things in simple and efficient ways to complete the objective of the project. 
 """
